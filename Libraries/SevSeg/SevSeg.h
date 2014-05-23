@@ -178,6 +178,7 @@ public:
   void DisplayString(char*, byte);
 //  void NewNumber(int number_in, byte DecPlace_in); 
   void Begin(boolean mode_in, byte numOfDigits, byte digit1, byte digit2, byte digit3, byte digit4, byte segment1, byte segment2, byte segment3, byte segment4, byte segment5, byte segment6, byte segment7, byte segmentDP);
+  void Begin(boolean mode_in, byte numOfDigits, byte digit1, byte digit2, byte digit3, byte digit4, byte digit5, byte digit6, byte digit7, byte digit8, byte segment1, byte segment2, byte segment3, byte segment4, byte segment5, byte segment6, byte segment7, byte segmentDP);
   void Begin(boolean mode_in, byte numOfDigits, byte digit1, byte digit2, byte digit3, byte digit4, byte digitColon, byte digitApostrophe, byte segment1, byte segment2, byte segment3, byte segment4, byte segment5, byte segment6, byte segment7, byte segmentDP, byte segmentColon, byte segmentApostrophe);
   void SetBrightness(byte percentBright);
 
@@ -191,7 +192,7 @@ private:
   //Private Variables
   boolean mode, DigitOn, DigitOff, SegOn, SegOff;
 
-  byte digit1, digit2, digit3, digit4;
+  byte digit1, digit2, digit3, digit4, digit5, digit6, digit7, digit8;
   byte digitApostrophe, digitColon, segmentApostrophe, segmentColon;
   byte segmentA, segmentB, segmentC, segmentD, segmentE, segmentF, segmentG, segmentDP;
   

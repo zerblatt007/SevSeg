@@ -168,6 +168,20 @@ void SevSeg::Begin(boolean mode_in, byte numOfDigits,
 		segD, segE, segF, segG, segDP, 255, 255);
 }
 
+//Begin
+/*******************************************************************************************/
+//Set pin modes and turns all displays off
+//This third begin is used when the display does not support a colon and apostrophe, and have up to 8 digits
+//The digitApostrophe, segmentApostrophe, and dig/segColon are set to 255 and the normal .Begin is called
+void SevSeg::Begin(boolean mode_in, byte numOfDigits, 
+	byte dig1, byte dig2, byte dig3, byte dig4, byte dig5, byte dig6, byte dig7, byte dig8, 
+	byte segA, byte segB, byte segC, byte segD, byte segE, byte segF, byte segG, 
+	byte segDP)
+{
+  Begin(mode_in, numOfDigits, dig1, dig2, dig3, dig4, dig5, dig6, dig7, dig8, 255, 255, segA, segB, segC,
+		segD, segE, segF, segG, segDP, 255, 255);
+}
+
 //Set the display brightness
 /*******************************************************************************************/
 //Given a value between 0 and 100 (0% and 100%), set the brightness variable on the display
