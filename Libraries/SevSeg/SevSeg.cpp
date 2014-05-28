@@ -68,7 +68,7 @@ SevSeg::SevSeg()
 
 }
 void SevSeg::Begin(boolean mode_in, byte numOfDigits, 
-	byte dig1, byte dig2, byte dig3, byte dig4, 
+	byte dig1, byte dig2, byte dig3, byte dig4, byte dig5, byte dig6, byte dig7, byte dig8,
 	byte digitCol, byte digitApos,
 	byte segA, byte segB, byte segC, byte segD, byte segE, byte segF, byte segG, 
 	byte segDP, 
@@ -80,6 +80,10 @@ void SevSeg::Begin(boolean mode_in, byte numOfDigits,
   digit2 = dig2;
   digit3 = dig3;
   digit4 = dig4;
+  digit5 = dig5;
+  digit6 = dig6;
+  digit7 = dig7;
+  digit8 = dig8;
   digitApostrophe = digitApos;
   digitColon = digitCol;
   segmentA = segA;
@@ -115,6 +119,10 @@ void SevSeg::Begin(boolean mode_in, byte numOfDigits,
   DigitPins[1] = digit2;
   DigitPins[2] = digit3;
   DigitPins[3] = digit4;
+  DigitPins[4] = digit5;
+  DigitPins[5] = digit6;
+  DigitPins[6] = digit7;
+  DigitPins[7] = digit7;
   SegmentPins[0] = segmentA;
   SegmentPins[1] = segmentB;
   SegmentPins[2] = segmentC;
@@ -159,7 +167,7 @@ void SevSeg::Begin(boolean mode_in, byte numOfDigits,
 //Set pin modes and turns all displays off
 //This second begin is used when the display does not support a colon and apostrophe
 //The digitApostrophe, segmentApostrophe, and dig/segColon are set to 255 and the normal .Begin is called
-void SevSeg::Begin(boolean mode_in, byte numOfDigits, 
+/* void SevSeg::Begin(boolean mode_in, byte numOfDigits, 
 	byte dig1, byte dig2, byte dig3, byte dig4, 
 	byte segA, byte segB, byte segC, byte segD, byte segE, byte segF, byte segG, 
 	byte segDP)
@@ -167,13 +175,13 @@ void SevSeg::Begin(boolean mode_in, byte numOfDigits,
   Begin(mode_in, numOfDigits, dig1, dig2, dig3, dig4, 255, 255, segA, segB, segC,
 		segD, segE, segF, segG, segDP, 255, 255);
 }
-
+*/
 //Begin
 /*******************************************************************************************/
 //Set pin modes and turns all displays off
 //This third begin is used when the display does not support a colon and apostrophe, and have up to 8 digits
 //The digitApostrophe, segmentApostrophe, and dig/segColon are set to 255 and the normal .Begin is called
-void SevSeg::Begin(boolean mode_in, byte numOfDigits, 
+/*void SevSeg::Begin(boolean mode_in, byte numOfDigits, 
 	byte dig1, byte dig2, byte dig3, byte dig4, byte dig5, byte dig6, byte dig7, byte dig8, 
 	byte segA, byte segB, byte segC, byte segD, byte segE, byte segF, byte segG, 
 	byte segDP)
@@ -181,6 +189,7 @@ void SevSeg::Begin(boolean mode_in, byte numOfDigits,
   Begin(mode_in, numOfDigits, dig1, dig2, dig3, dig4, dig5, dig6, dig7, dig8, 255, 255, segA, segB, segC,
 		segD, segE, segF, segG, segDP, 255, 255);
 }
+*/
 
 //Set the display brightness
 /*******************************************************************************************/
@@ -202,7 +211,7 @@ void SevSeg::SetBrightness(byte percentBright)
 //Will turn the display on for a given amount of time - this helps control brightness
 void SevSeg::DisplayString(char* toDisplay, byte DecAposColon)
 {
-	//For the purpose of this code, digit = 1 is the left most digit, digit = 4 is the right most digit
+	//For the purpose of this code, digit = 1 is the left most digit, digit = 8 is the right most digit
 	for(byte digit = 1 ; digit < (numberOfDigits+1) ; digit++) 
 	{
 		switch(digit) 
@@ -219,7 +228,19 @@ void SevSeg::DisplayString(char* toDisplay, byte DecAposColon)
 			case 4:
 				digitalWrite(digit4, DigitOn);
 				break;
-			//This only currently works for 4 digits
+			case 5:
+				digitalWrite(digit5, DigitOn);
+				break;
+			case 6:
+				digitalWrite(digit6, DigitOn);
+				break;
+			case 7:
+				digitalWrite(digit7, DigitOn);
+				break;
+			case 8:
+				digitalWrite(digit8, DigitOn);
+				break;
+			//This only currently works for 8 digits
 		}
 
 		//Here we access the array of segments
@@ -280,7 +301,19 @@ void SevSeg::DisplayString(char* toDisplay, byte DecAposColon)
 			case 4:
 			  digitalWrite(digit4, DigitOff);
 			  break;
-			//This only currently works for 4 digits
+			case 5:
+			  digitalWrite(digit5, DigitOff);
+			  break;
+			case 6:
+			  digitalWrite(digit6, DigitOff);
+			  break;
+			case 7:
+			  digitalWrite(digit7, DigitOff);
+			  break;
+			case 8:
+			  digitalWrite(digit8, DigitOff);
+			  break;
+			//This only currently works for 8 digits
 		}
 		// The display is on for microSeconds(brightnessLevel + 1), now turn off for the remainder of the framePeriod
 		delayMicroseconds(FRAMEPERIOD - brightnessDelay + 1); //the +1 is a hack so that we can never have a delayMicroseconds(0), causes display to flicker 		
