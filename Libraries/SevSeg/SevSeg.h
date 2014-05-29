@@ -200,7 +200,7 @@ private:
   
   unsigned int brightnessDelay;
 
-  byte DigitPins[4];
+  byte DigitPins[8];
   byte SegmentPins[8];
   boolean lights[4][8];
   byte nums[4];

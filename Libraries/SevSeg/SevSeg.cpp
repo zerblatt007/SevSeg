@@ -122,7 +122,7 @@ void SevSeg::Begin(boolean mode_in, byte numOfDigits,
   DigitPins[4] = digit5;
   DigitPins[5] = digit6;
   DigitPins[6] = digit7;
-  DigitPins[7] = digit7;
+  DigitPins[7] = digit8;
   SegmentPins[0] = segmentA;
   SegmentPins[1] = segmentB;
   SegmentPins[2] = segmentC;

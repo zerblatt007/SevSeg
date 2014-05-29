@@ -34,11 +34,11 @@ SevSeg myDisplay;
 
 //Create global variables
 unsigned long timer;
-int deciSecond = 0;
+unsigned long deciSecond = 99000000;
 
 void setup()
 {
-
+ 
   int displayType = COMMON_CATHODE; //Your display is either common cathode or common anode
 
   
@@ -70,17 +70,18 @@ void setup()
   myDisplay.SetBrightness(100); //Set the display to 100% brightness level
 
   timer = millis();
+  
 }
 
 void loop()
 {
   //Example ways of displaying a decimal number
-  char tempString[10]; //Used for sprintf
-  sprintf(tempString, "%4d", deciSecond); //Convert deciSecond into a string that is right adjusted
-  //sprintf(tempString, "%d", deciSecond); //Convert deciSecond into a string that is left adjusted
-  //sprintf(tempString, "%04d", deciSecond); //Convert deciSecond into a string with leading zeros
-  //sprintf(tempString, "%4d", deciSecond * -1); //Shows a negative sign infront of right adjusted number
-  //sprintf(tempString, "%4X", deciSecond); //Count in HEX, right adjusted
+  char tempString[9]; //Used for sprintf
+  sprintf(tempString, "%8lu", deciSecond); //Convert deciSecond into a string that is right adjusted
+  //sprintf(tempString, "%lu", deciSecond); //Convert deciSecond into a string that is left adjusted
+  //sprintf(tempString, "%08lu", deciSecond); //Convert deciSecond into a string with leading zeros
+  //sprintf(tempString, "%8lu", deciSecond * -1); //Shows a negative sign infront of right adjusted number
+  //sprintf(tempString, "%08Xlu", deciSecond); /Count in HEX, right adjusted
 
   //Produce an output on the display
   myDisplay.DisplayString(tempString, 0); //(numberToDisplay, decimal point location)
@@ -90,7 +91,7 @@ void loop()
   //myDisplay.DisplayString("-23b", 3); //Display string, decimal point in third position
 
   //Check if 10ms has elapsed
-  if (millis() - timer >= 100)
+  if (millis() - timer >= 10)
   {
     timer = millis();
     deciSecond++;
