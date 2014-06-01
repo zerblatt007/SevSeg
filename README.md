@@ -1,4 +1,4 @@
-This library allows an Arduino to easily display numbers and characters on a 4 digit 7-segment display without a separate 7-segment display controller.
+This library allows an Arduino to easily display numbers and characters on two 4 digit 7-segment HP bubble display without a separate 7-segment display controller.
 It works for any digital pin arrangement, common anode and common cathode displays. It also has character support including letters A-F and many symbols. 
 
 Hardware Setup
